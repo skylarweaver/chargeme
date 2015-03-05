@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>2D855823-AB2F-4913-8E42-4624EEA5BCC3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>chargeme</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>1FF72ECCFB1E8C39DC60D5C1BBD67763371DE112</key>
+		<string>https://github.com/paulokuda/chargeme.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>chargeme.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>1FF72ECCFB1E8C39DC60D5C1BBD67763371DE112</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/paulokuda/chargeme.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>1FF72ECCFB1E8C39DC60D5C1BBD67763371DE112</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>1FF72ECCFB1E8C39DC60D5C1BBD67763371DE112</string>
+			<key>IDESourceControlWCCName</key>
+			<string>chargeme</string>
+		</dict>
+	</array>
+</dict>
+</plist>

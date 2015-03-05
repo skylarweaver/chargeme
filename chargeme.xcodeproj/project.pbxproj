@@ -38,6 +38,7 @@
 		3362EBB61AA7C8BE00FE5887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3362EBB71AA7C8BE00FE5887 /* chargemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chargemeTests.swift; sourceTree = "<group>"; };
 		3362EBC11AA7CB3E00FE5887 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +84,7 @@
 			children = (
 				3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */,
 				3362EBA31AA7C8BE00FE5887 /* ViewController.swift */,
+				3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
 				3362EBA81AA7C8BE00FE5887 /* Images.xcassets */,
 				3362EBAA1AA7C8BE00FE5887 /* LaunchScreen.xib */,
