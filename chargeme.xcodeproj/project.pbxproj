@@ -13,7 +13,7 @@
 		3362EBA91AA7C8BE00FE5887 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3362EBA81AA7C8BE00FE5887 /* Images.xcassets */; };
 		3362EBAC1AA7C8BE00FE5887 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3362EBAA1AA7C8BE00FE5887 /* LaunchScreen.xib */; };
 		3362EBB81AA7C8BE00FE5887 /* chargemeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362EBB71AA7C8BE00FE5887 /* chargemeTests.swift */; };
-		3362EBC21AA7CB3E00FE5887 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3362EBC11AA7CB3E00FE5887 /* FacebookSDK.framework */; };
+		3362ECFB1AA7DDAF00FE5887 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3362ECFA1AA7DDAF00FE5887 /* FacebookSDK.framework */; };
 		943890E91AA7D38C00DB8F00 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890E41AA7D37200DB8F00 /* Bolts.framework */; };
 		943890EA1AA7D38C00DB8F00 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890E51AA7D37200DB8F00 /* Parse.framework */; };
 		943890EB1AA7D38C00DB8F00 /* ParseCrashReporting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890E61AA7D37200DB8F00 /* ParseCrashReporting.framework */; };
@@ -54,7 +54,7 @@
 		3362EBB61AA7C8BE00FE5887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3362EBB71AA7C8BE00FE5887 /* chargemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chargemeTests.swift; sourceTree = "<group>"; };
 		3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
-		3362EBC11AA7CB3E00FE5887 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		3362ECFA1AA7DDAF00FE5887 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		943890E41AA7D37200DB8F00 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		943890E51AA7D37200DB8F00 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		943890E61AA7D37200DB8F00 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -86,10 +86,10 @@
 				943890F91AA7D43B00DB8F00 /* QuartzCore.framework in Frameworks */,
 				943890F71AA7D43600DB8F00 /* MobileCoreServices.framework in Frameworks */,
 				943890F51AA7D42C00DB8F00 /* CoreLocation.framework in Frameworks */,
+				3362ECFB1AA7DDAF00FE5887 /* FacebookSDK.framework in Frameworks */,
 				943890F31AA7D42700DB8F00 /* CoreGraphics.framework in Frameworks */,
 				943890F11AA7D41B00DB8F00 /* CFNetwork.framework in Frameworks */,
 				943890EF1AA7D41400DB8F00 /* AudioToolbox.framework in Frameworks */,
-				3362EBC21AA7CB3E00FE5887 /* FacebookSDK.framework in Frameworks */,
 				943890E91AA7D38C00DB8F00 /* Bolts.framework in Frameworks */,
 				943890EA1AA7D38C00DB8F00 /* Parse.framework in Frameworks */,
 				943890EB1AA7D38C00DB8F00 /* ParseCrashReporting.framework in Frameworks */,
@@ -113,6 +113,7 @@
 			children = (
 				943891021AA7D46C00DB8F00 /* libsqlite3.dylib */,
 				943891001AA7D46200DB8F00 /* libz.dylib */,
+				3362ECFA1AA7DDAF00FE5887 /* FacebookSDK.framework */,
 				943890FE1AA7D45800DB8F00 /* SystemConfiguration.framework */,
 				943890FC1AA7D44C00DB8F00 /* StoreKit.framework */,
 				943890FA1AA7D44300DB8F00 /* Security.framework */,
@@ -122,7 +123,6 @@
 				943890F21AA7D42700DB8F00 /* CoreGraphics.framework */,
 				943890F01AA7D41B00DB8F00 /* CFNetwork.framework */,
 				943890EE1AA7D41400DB8F00 /* AudioToolbox.framework */,
-				3362EBC11AA7CB3E00FE5887 /* FacebookSDK.framework */,
 				3362EB9E1AA7C8BE00FE5887 /* chargeme */,
 				3362EBB41AA7C8BE00FE5887 /* chargemeTests */,
 				3362EB9D1AA7C8BE00FE5887 /* Products */,
