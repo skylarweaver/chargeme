@@ -53,6 +53,7 @@
 		3362EBB11AA7C8BE00FE5887 /* chargemeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chargemeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3362EBB61AA7C8BE00FE5887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3362EBB71AA7C8BE00FE5887 /* chargemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chargemeTests.swift; sourceTree = "<group>"; };
+		3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		3362EBC11AA7CB3E00FE5887 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
 		943890E41AA7D37200DB8F00 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		943890E51AA7D37200DB8F00 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -147,6 +148,7 @@
 			children = (
 				3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */,
 				3362EBA31AA7C8BE00FE5887 /* ViewController.swift */,
+				3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
 				3362EBA81AA7C8BE00FE5887 /* Images.xcassets */,
 				3362EBAA1AA7C8BE00FE5887 /* LaunchScreen.xib */,
@@ -243,6 +245,7 @@
 			knownRegions = (
 				en,
 				Base,
+				he,
 			);
 			mainGroup = 3362EB931AA7C8BE00FE5887;
 			productRefGroup = 3362EB9D1AA7C8BE00FE5887 /* Products */;
