@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,17 +16,49 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        [Parse enableLocalDatastore];
         
+        // Initialize Parse.
+        [Parse setApplicationId:"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
+        clientKey:"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
+        
+        // [Optional] Track statistics around application opens.
+        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+        // Override point for customization after application launch.
         FBLoginView.self
         FBProfilePictureView.self
-        return true
+
+
+        Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
+        
+        //Tests to see if parse is working
+        var object = PFObject(className: "TestClass")
+        object.addObject("Banana", forKey: "favoriteFood")
+        object.addObject("Chocolate", forKey: "favoriteIceCream")
+        object.save()
+        
+        
+//        // [Optional] Power your app with Local Datastore. For more info, go to
+//        // https://parse.com/docs/ios_guide#localdatastore/iOS
+//        [Parse enableLocalDatastore];
+//        
+//        // Initialize Parse.
+//        [Parse setApplicationId:@"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
+//        clientKey:@"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
+//        
+//        // [Optional] Track statistics around application opens.
+//        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//        
+//        // ...
+
+    return true
     }
+    
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
         
-        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-        return wasHandled
+//        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+//        return wasHandled
         
     }
 
@@ -49,21 +82,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-    - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // [Optional] Power your app with Local Datastore. For more info, go to
-    // https://parse.com/docs/ios_guide#localdatastore/iOS
-    [Parse enableLocalDatastore];
-    
-    // Initialize Parse.
-    [Parse setApplicationId:@"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
-    clientKey:@"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
-    
-    // [Optional] Track statistics around application opens.
-    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-    
-    // ...
     }
 
 }

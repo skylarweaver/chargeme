@@ -8,12 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController, FBLoginViewDelegate {
+class ViewController: UIViewController {
     
-    @IBOutlet var fbLoginView : FBLoginView!
+   
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
