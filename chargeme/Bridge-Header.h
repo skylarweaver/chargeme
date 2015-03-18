@@ -9,6 +9,7 @@
 #ifndef chargeme_Bridge_Header_h
 #define chargeme_Bridge_Header_h
 
-#import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
+#import <ParseUI/ParseUI.h>
 
 #endif

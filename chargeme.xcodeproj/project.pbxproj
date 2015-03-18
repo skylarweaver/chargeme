@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		333E54511ABA34AE007EFF2F /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333E54501ABA34AE007EFF2F /* Accounts.framework */; };
+		333E54531ABA34B2007EFF2F /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 333E54521ABA34B2007EFF2F /* Social.framework */; };
 		3362EBA21AA7C8BE00FE5887 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */; };
 		3362EBA41AA7C8BE00FE5887 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3362EBA31AA7C8BE00FE5887 /* ViewController.swift */; };
 		3362EBA71AA7C8BE00FE5887 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3362EBA51AA7C8BE00FE5887 /* Main.storyboard */; };
@@ -43,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		333E54501ABA34AE007EFF2F /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		333E54521ABA34B2007EFF2F /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		3362EB9C1AA7C8BE00FE5887 /* chargeme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chargeme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3362EBA01AA7C8BE00FE5887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				333E54531ABA34B2007EFF2F /* Social.framework in Frameworks */,
+				333E54511ABA34AE007EFF2F /* Accounts.framework in Frameworks */,
 				943891031AA7D46C00DB8F00 /* libsqlite3.dylib in Frameworks */,
 				943891011AA7D46200DB8F00 /* libz.dylib in Frameworks */,
 				943890FF1AA7D45800DB8F00 /* SystemConfiguration.framework in Frameworks */,
@@ -111,6 +117,8 @@
 		3362EB931AA7C8BE00FE5887 = {
 			isa = PBXGroup;
 			children = (
+				333E54521ABA34B2007EFF2F /* Social.framework */,
+				333E54501ABA34AE007EFF2F /* Accounts.framework */,
 				943891021AA7D46C00DB8F00 /* libsqlite3.dylib */,
 				943891001AA7D46200DB8F00 /* libz.dylib */,
 				3362ECFA1AA7DDAF00FE5887 /* FacebookSDK.framework */,
