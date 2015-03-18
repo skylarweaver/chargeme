@@ -16,17 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        [Parse enableLocalDatastore];
+//        [Parse enableLocalDatastore];
         
         // Initialize Parse.
-        [Parse setApplicationId:"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
-        clientKey:"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
+//        [Parse setApplicationId:"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
+//        clientKey:"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
         
         // [Optional] Track statistics around application opens.
-        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-        // Override point for customization after application launch.
-        FBLoginView.self
-        FBProfilePictureView.self
+//        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+//        // Override point for customization after application launch.
+//        FBLoginView.self
+//        FBProfilePictureView.self
 
 
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var object = PFObject(className: "TestClass")
         object.addObject("Banana", forKey: "favoriteFood")
         object.addObject("Chocolate", forKey: "favoriteIceCream")
-        object.save()
+        object.saveInBackground()
         
         
 //        // [Optional] Power your app with Local Datastore. For more info, go to
@@ -60,6 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        var wasHandled:Bool = FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
 //        return wasHandled
         
+        return true;
     }
 
     func applicationWillResignActive(application: UIApplication) {

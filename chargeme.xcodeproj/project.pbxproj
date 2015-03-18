@@ -31,7 +31,6 @@
 		943890FF1AA7D45800DB8F00 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890FE1AA7D45800DB8F00 /* SystemConfiguration.framework */; };
 		943891011AA7D46200DB8F00 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891001AA7D46200DB8F00 /* libz.dylib */; };
 		943891031AA7D46C00DB8F00 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891021AA7D46C00DB8F00 /* libsqlite3.dylib */; };
-		943891081AA7E35900DB8F00 /* parseBridgerHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 943891071AA7E35900DB8F00 /* parseBridgerHeader.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +74,6 @@
 		943891001AA7D46200DB8F00 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		943891021AA7D46C00DB8F00 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		943891061AA7E35800DB8F00 /* chargeme-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "chargeme-Bridging-Header.h"; sourceTree = "<group>"; };
-		943891071AA7E35900DB8F00 /* parseBridgerHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = parseBridgerHeader.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +91,6 @@
 				943890F91AA7D43B00DB8F00 /* QuartzCore.framework in Frameworks */,
 				943890F71AA7D43600DB8F00 /* MobileCoreServices.framework in Frameworks */,
 				943890F51AA7D42C00DB8F00 /* CoreLocation.framework in Frameworks */,
-				3362ECFB1AA7DDAF00FE5887 /* FacebookSDK.framework in Frameworks */,
 				943890F31AA7D42700DB8F00 /* CoreGraphics.framework in Frameworks */,
 				943890F11AA7D41B00DB8F00 /* CFNetwork.framework in Frameworks */,
 				943890EF1AA7D41400DB8F00 /* AudioToolbox.framework in Frameworks */,
@@ -127,7 +124,6 @@
 				943890E81AA7D37200DB8F00 /* ParseUI.framework */,
 				943891021AA7D46C00DB8F00 /* libsqlite3.dylib */,
 				943891001AA7D46200DB8F00 /* libz.dylib */,
-				3362ECFA1AA7DDAF00FE5887 /* FacebookSDK.framework */,
 				943890FE1AA7D45800DB8F00 /* SystemConfiguration.framework */,
 				943890FC1AA7D44C00DB8F00 /* StoreKit.framework */,
 				943890FA1AA7D44300DB8F00 /* Security.framework */,
@@ -156,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */,
-				943891071AA7E35900DB8F00 /* parseBridgerHeader.m */,
 				3362EBA31AA7C8BE00FE5887 /* ViewController.swift */,
 				3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
@@ -295,7 +290,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				3362EBA41AA7C8BE00FE5887 /* ViewController.swift in Sources */,
-				943891081AA7E35900DB8F00 /* parseBridgerHeader.m in Sources */,
 				3362EBA21AA7C8BE00FE5887 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
