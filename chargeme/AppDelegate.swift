@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
 //        [Parse enableLocalDatastore];
         
         // Initialize Parse.
@@ -28,16 +29,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        FBLoginView.self
 //        FBProfilePictureView.self
 
+        NSLog("HELLO")
 
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
         
         //Tests to see if parse is working
-        var object = PFObject(className: "TestClass")
-        object.addObject("Banana", forKey: "favoriteFood")
-        object.addObject("Chocolate", forKey: "favoriteIceCream")
-        object.saveInBackground()
-        
-        
+//
+        NSLog("HELLO")
+        var object = PFObject(className: "testDataClass")
+        object.addObject("iOSBlog", forKey: "websiteUrl")
+        object.addObject("Five", forKey: "websiteRating")
+        object.saveInBackgroundWithBlock {
+            (success: Bool!, error: NSError!) -> Void in
+            if (success != nil) {
+                NSLog("Object created with id: \(object.objectId)")
+            } else {
+                NSLog("%@", error)
+            }
+        PFFacebookUtils.initializeFacebook()
+        }
 //        // [Optional] Power your app with Local Datastore. For more info, go to
 //        // https://parse.com/docs/ios_guide#localdatastore/iOS
 //        [Parse enableLocalDatastore];

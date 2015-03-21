@@ -3,4 +3,7 @@
 //
 
 #import <Parse/Parse.h>
+#import <Parse/PFObject+Subclass.h>
 #import <Bolts/Bolts.h>
+#import <FacebookSDK/FacebookSDK.h>
+#import <ParseFacebookUtils/PFFacebookUtils.h>

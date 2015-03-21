@@ -31,6 +31,7 @@
 		943890FF1AA7D45800DB8F00 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890FE1AA7D45800DB8F00 /* SystemConfiguration.framework */; };
 		943891011AA7D46200DB8F00 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891001AA7D46200DB8F00 /* libz.dylib */; };
 		943891031AA7D46C00DB8F00 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891021AA7D46C00DB8F00 /* libsqlite3.dylib */; };
+		94D103491ABDD60B0003F4B0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +57,6 @@
 		3362EBB11AA7C8BE00FE5887 /* chargemeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chargemeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3362EBB61AA7C8BE00FE5887 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3362EBB71AA7C8BE00FE5887 /* chargemeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chargemeTests.swift; sourceTree = "<group>"; };
-		3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Bridge-Header.h"; sourceTree = "<group>"; };
 		943890E41AA7D37200DB8F00 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		943890E51AA7D37200DB8F00 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		943890E61AA7D37200DB8F00 /* ParseCrashReporting.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseCrashReporting.framework; sourceTree = "<group>"; };
@@ -74,6 +74,7 @@
 		943891001AA7D46200DB8F00 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		943891021AA7D46C00DB8F00 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		943891061AA7E35800DB8F00 /* chargeme-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "chargeme-Bridging-Header.h"; sourceTree = "<group>"; };
+		94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				333E54531ABA34B2007EFF2F /* Social.framework in Frameworks */,
+				94D103491ABDD60B0003F4B0 /* FacebookSDK.framework in Frameworks */,
 				333E54511ABA34AE007EFF2F /* Accounts.framework in Frameworks */,
 				943891031AA7D46C00DB8F00 /* libsqlite3.dylib in Frameworks */,
 				943891011AA7D46200DB8F00 /* libz.dylib in Frameworks */,
@@ -115,6 +117,7 @@
 		3362EB931AA7C8BE00FE5887 = {
 			isa = PBXGroup;
 			children = (
+				94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */,
 				333E54521ABA34B2007EFF2F /* Social.framework */,
 				333E54501ABA34AE007EFF2F /* Accounts.framework */,
 				943890E41AA7D37200DB8F00 /* Bolts.framework */,
@@ -153,7 +156,6 @@
 			children = (
 				3362EBA11AA7C8BE00FE5887 /* AppDelegate.swift */,
 				3362EBA31AA7C8BE00FE5887 /* ViewController.swift */,
-				3362EBC31AA7CF2500FE5887 /* Bridge-Header.h */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
 				3362EBA81AA7C8BE00FE5887 /* Images.xcassets */,
 				3362EBAA1AA7C8BE00FE5887 /* LaunchScreen.xib */,
@@ -419,6 +421,7 @@
 					/Users/paulokuda/Documents/FacebookSDK,
 					"/Users/Skylar/Downloads/parse-library-1.6.4",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
 				);
 				INFOPLIST_FILE = chargeme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -438,6 +441,7 @@
 					/Users/paulokuda/Documents/FacebookSDK,
 					"/Users/Skylar/Downloads/parse-library-1.6.4",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/FacebookSDK",
 				);
 				INFOPLIST_FILE = chargeme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
