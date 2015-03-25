@@ -16,25 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-//    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: NSDictionary?) -> Bool {
-//        [Parse enableLocalDatastore];
-        
-        // Initialize Parse.
-//        [Parse setApplicationId:"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
-//        clientKey:"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
-        
-        // [Optional] Track statistics around application opens.
-//        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-//        // Override point for customization after application launch.
-//        FBLoginView.self
-//        FBProfilePictureView.self
 
-        NSLog("HELLO")
+        println("HELLO")
 
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
         
+        //initialize facebook
+        PFFacebookUtils.initializeFacebook()
+        
+        var currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            // Do stuff with the user
+        } else {
+            // Show the signup or login screen
+        }
+        
+        
         //Tests to see if parse is working
-//
         NSLog("HELLO")
         var object = PFObject(className: "testDataClass")
         object.addObject("iOSBlog", forKey: "websiteUrl")
@@ -46,8 +44,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 NSLog("%@", error)
             }
-        PFFacebookUtils.initializeFacebook()
+        
         }
+        
+        //for parse facebook login
+        Utils.logInWithFacebook()
+//        func application(application: UIApplication,
+//            openURL url: NSURL,
+//            sourceApplication: String?,
+//            annotation: AnyObject?) -> Bool {
+//                return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication,
+//                    withSession:PFFacebookUtils.session())
+//        }
+//        
+//        //for parse facebook login
+//        func applicationDidBecomeActive(application: UIApplication) {
+//            NSLog("Here1")
+//            FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+//        }
+//        
+//        let permissions = ["user_about_me", "user_relationships", "user_birthday", "user_location"  ]
+//        PFFacebookUtils.logInWithPermissions(permissions, {
+//            (user: PFUser!, error: NSError!) -> Void in
+//            if let user = user {
+//                if user.isNew {
+//                    println("User signed up and logged in through Facebook!")
+//                } else {
+//                    println("User logged in through Facebook!")
+//                }
+//            } else {
+//                println("Uh oh. The user cancelled the Facebook login.")
+//            }
+//        })
+        
+        
 //        // [Optional] Power your app with Local Datastore. For more info, go to
 //        // https://parse.com/docs/ios_guide#localdatastore/iOS
 //        [Parse enableLocalDatastore];
