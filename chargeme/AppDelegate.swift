@@ -24,13 +24,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initialize facebook
         PFFacebookUtils.initializeFacebook()
         
-        var currentUser = PFUser.currentUser()
-        if currentUser != nil {
-            // Do stuff with the user
-        } else {
-            // Show the signup or login screen
-        }
+//        var currentUser = PFUser.currentUser()
+//        if currentUser != nil {
+//            // Do stuff with the user
+//        } else {
+//            // Show the signup or login screen
+//        }
         
+//                var user = PFUser()
+//                user.username = "myUsername"
+//                user.password = "myPassword"
+//                user.email = "email@example.com"
+//                user.signUpInBackgroundWithBlock {
+//                    (succeeded: Bool!, error: NSError!) -> Void in
+//                    if error == nil {
+//                        // Hooray! Let them use the app now.
+//                    } else {
+//                        println("SHITTTT")
+//                        // Show the errorString somewhere and let the user try again.
+//                    }
+//                }
+        var user1 = PFUser.currentUser()
+        println (user1.email)
         
         //Tests to see if parse is working
         NSLog("HELLO")
@@ -49,20 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //for parse facebook login
         Utils.logInWithFacebook()
-//        func application(application: UIApplication,
-//            openURL url: NSURL,
-//            sourceApplication: String?,
-//            annotation: AnyObject?) -> Bool {
-//                return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication,
-//                    withSession:PFFacebookUtils.session())
-//        }
-//        
-//        //for parse facebook login
-//        func applicationDidBecomeActive(application: UIApplication) {
-//            NSLog("Here1")
-//            FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
-//        }
-//        
+        Utils.obtainUserNameAndFbId()
+//
 //        let permissions = ["user_about_me", "user_relationships", "user_birthday", "user_location"  ]
 //        PFFacebookUtils.logInWithPermissions(permissions, {
 //            (user: PFUser!, error: NSError!) -> Void in
@@ -93,7 +96,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     return true
     }
+    func application(application: UIApplication,
+        openURL url: NSURL,
+        sourceApplication: String?,
+        annotation: AnyObject?) -> Bool {
+            return FBAppCall.handleOpenURL(url, sourceApplication:sourceApplication,
+                withSession:PFFacebookUtils.session())
+    }
     
+    //for parse facebook login
+    func applicationDidBecomeActive(application: UIApplication) {
+        NSLog("Here1")
+        FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+    }
+
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: NSString?, annotation: AnyObject) -> Bool {
         
@@ -116,11 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
     }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
+    
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
