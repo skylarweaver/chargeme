@@ -24,26 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //initialize facebook
         PFFacebookUtils.initializeFacebook()
         
-//        var currentUser = PFUser.currentUser()
-//        if currentUser != nil {
-//            // Do stuff with the user
-//        } else {
-//            // Show the signup or login screen
-//        }
-        
-//                var user = PFUser()
-//                user.username = "myUsername"
-//                user.password = "myPassword"
-//                user.email = "email@example.com"
-//                user.signUpInBackgroundWithBlock {
-//                    (succeeded: Bool!, error: NSError!) -> Void in
-//                    if error == nil {
-//                        // Hooray! Let them use the app now.
-//                    } else {
-//                        println("SHITTTT")
-//                        // Show the errorString somewhere and let the user try again.
-//                    }
-//                }
         var user1 = PFUser.currentUser()
         println (user1.email)
         
@@ -65,35 +45,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //for parse facebook login
         Utils.logInWithFacebook()
         Utils.obtainUserNameAndFbId()
-//
-//        let permissions = ["user_about_me", "user_relationships", "user_birthday", "user_location"  ]
-//        PFFacebookUtils.logInWithPermissions(permissions, {
-//            (user: PFUser!, error: NSError!) -> Void in
-//            if let user = user {
-//                if user.isNew {
-//                    println("User signed up and logged in through Facebook!")
-//                } else {
-//                    println("User logged in through Facebook!")
-//                }
-//            } else {
-//                println("Uh oh. The user cancelled the Facebook login.")
-//            }
-//        })
-        
-        
-//        // [Optional] Power your app with Local Datastore. For more info, go to
-//        // https://parse.com/docs/ios_guide#localdatastore/iOS
-//        [Parse enableLocalDatastore];
-//        
-//        // Initialize Parse.
-//        [Parse setApplicationId:@"I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv"
-//        clientKey:@"VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5"];
-//        
-//        // [Optional] Track statistics around application opens.
-//        [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
-//        
-//        // ...
-
     return true
     }
     func application(application: UIApplication,
