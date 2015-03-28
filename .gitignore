@@ -30,3 +30,5 @@ DerivedData
 .idea/
 # Pods - for those of you who use CocoaPods
 Pods
+chargeme.xcodeproj/project.xcworkspace/
+/chargeme.xcodeproj/project.xcworkspace/
