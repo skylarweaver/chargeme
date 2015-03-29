@@ -9,7 +9,6 @@
 import Foundation
 
 class Utils {
-    
     class func notLoggedIn() -> Bool {
         let user = PFUser.currentUser()
         // here I assume that a user must be linked to Facebook
@@ -21,9 +20,8 @@ class Utils {
     
     
     class func logInWithFacebook() {
-            PFFacebookUtils.logInWithPermissions(["public_profile", "user_friends"]) {
+            PFFacebookUtils.logInWithPermissions(["public_profile", "email", "user_friends"]) {
             (user: PFUser!, error: NSError!) -> Void in
-            println("USER")
             if user == nil {
                 NSLog("The user cancelled the Facebook login (user is nil)")
             }
@@ -46,6 +44,7 @@ class Utils {
     
     class func obtainUserNameAndFbId() {
         if notLoggedIn() {
+            println("NOT LOGGED IN")
             return
         }
         let user = PFUser.currentUser() // Won't be nil because is logged in
@@ -78,6 +77,7 @@ class Utils {
                         // Save to Parse:
                         PFUser.currentUser().username = result.name
                         PFUser.currentUser().setValue(result.objectID, forKey: "fbId")
+                        PFUser.currentUser().setValue(result.email, forKey: "email")
                         PFUser.currentUser().saveEventually() // Always use saveEventually if you want to be sure that the save will succeed
                     }
                 })
