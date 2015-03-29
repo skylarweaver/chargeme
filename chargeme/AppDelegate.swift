@@ -16,17 +16,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        println("HELLO")
-
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
         
         //initialize facebook
         PFFacebookUtils.initializeFacebook()
         
-        var user1 = PFUser.currentUser()
-        println (user1.email)
-        
+//        var user1 = PFUser.currentUser()
+//        println (user1.email)
+//        
         //Tests to see if parse is working
         NSLog("HELLO")
         var object = PFObject(className: "testDataClass")
@@ -39,12 +36,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 NSLog("%@", error)
             }
+            var user2 = PFUser.currentUser()
+            if (user2 != nil){
+                println("EMAIL!")
+                println(user2.email)
+            }
         
         }
         
         //for parse facebook login
-        Utils.logInWithFacebook()
-        Utils.obtainUserNameAndFbId()
+//        Utils.logInWithFacebook()
+        
+
     return true
     }
     func application(application: UIApplication,
@@ -57,8 +60,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     //for parse facebook login
     func applicationDidBecomeActive(application: UIApplication) {
+        Utils.obtainUserNameAndFbId()
         NSLog("Here1")
+        
         FBAppCall.handleDidBecomeActiveWithSession(PFFacebookUtils.session())
+    
     }
 
     

@@ -10,6 +10,11 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    @IBAction func facebookLogin(sender: AnyObject) {
+        Utils.logInWithFacebook()
+//        nameLabel.text = PFUser.currentUser().username
+    }
+    @IBOutlet weak var nameLabel: UILabel!
    
 
     override func viewDidLoad() {
