@@ -11,17 +11,37 @@ import UIKit
 class VC_Homepage: UIViewController {
     
     @IBOutlet weak var sendnotif: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var welcomeLabel: UILabel!
+    @IBOutlet weak var facebookLoginButton: UIButton!
+    @IBOutlet weak var textDescription: UITextView!
     
+    
+    
+    //User clicks Login button
     @IBAction func facebookLogin(sender: AnyObject) {
         Utils.logInWithFacebook()
 //      nameLabel.text = PFUser.currentUser().username
     }
-    @IBOutlet weak var nameLabel: UILabel!
    
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        if Utils.notLoggedIn(){
+//            welcomeLabel.text = "Welcome"
+//            nameLabel.text = PFUser.currentUser().username
+            textDescription.hidden = false
+            welcomeLabel.hidden = true
+            nameLabel.hidden = true
+        }
+        else{
+            welcomeLabel.text = "Welcome"
+            nameLabel.text = PFUser.currentUser().username
+            welcomeLabel.hidden = false
+            nameLabel.hidden = false
+            textDescription.hidden = true
+            facebookLoginButton.hidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
