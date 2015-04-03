@@ -43,25 +43,26 @@ class Utils {
     
     
     class func obtainUserNameAndFbId() {
+        NSLog("Here 2")
         if notLoggedIn() {
-            println("NOT LOGGED IN")
+            NSLog("NOT LOGGED IN")
             return
         }
         let user = PFUser.currentUser() // Won't be nil because is logged in
         // RETURN IF WE ALREADY HAVE A USERNAME AND FBID (note that we check the fbId because Parse automatically fills in the username with random numbers)
         if let fbId = user["fbId"] as? String {
             if !fbId.isEmpty {
-                println("we already have a username and fbId -> return")
+                NSLog("we already have a username and fbId -> return")
                 return
             }
         }
         // REQUEST TO FACEBOOK
-        println("performing request to FB for username and IDF...")
+        NSLog("performing request to FB for username and IDF...")
         if let session = PFFacebookUtils.session() {
             if session.isOpen {
                 println("session is open")
                 FBRequestConnection.startForMeWithCompletionHandler({ (connection: FBRequestConnection!, result: AnyObject!, error: NSError!) -> Void in
-                    println("done me request")
+                    NSLog("done me request")
                     if error != nil {
                         println("facebook me request - error is not nil :(")
                     } else {
@@ -72,7 +73,7 @@ class Utils {
                         println(result["name"])
                         println(result["id"])
                         // 2)
-                        println(result.name)
+                        NSLog(result.name)
                         println(result.objectID)
                         // Save to Parse:
                         PFUser.currentUser().username = result.name

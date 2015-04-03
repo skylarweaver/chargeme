@@ -8,6 +8,7 @@
 
 import UIKit
 
+// The AppDelegate is 'root' code of our application that is 'present' in any screen, and also handles events like recieving notifactions, managing users, and more
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
-        
         //initialize facebook
         PFFacebookUtils.initializeFacebook()
-        
 //        var user1 = PFUser.currentUser()
 //        println (user1.email)
-//        
         //Tests to see if parse is working
         NSLog("HELLO")
         var object = PFObject(className: "testDataClass")
@@ -41,15 +39,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 println("EMAIL!")
                 println(user2.email)
             }
-        
         }
         
-        //for parse facebook login
-//        Utils.logInWithFacebook()
+        // ===================================
+        // Notification Setup code: Will ask user if they want to allow notifications from our app, and sets up what notifications we respond to
+        
+        // Notification actions
+        var firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
+        firstAction.identifier = "FIRST_ACTION"
+        firstAction.title = "First Action"
+        // This action activates in background of app
+        firstAction.activationMode = UIUserNotificationActivationMode.Background
+        firstAction.destructive = true
+        firstAction.authenticationRequired = false // authentication would be required in cases where said notification wants to delete data, etc
+        
+        // Notifiation categories
+        // You can organize your actions that are displayed in different contexts (eg default = all contexts, or only on lock screen, or only as a banner, etc. Here there's only one action so I'll just make it default)
+        var firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
+        firstCategory.identifier = "FIRST_CATEGORY"
+        let defaultActions:NSArray = [firstAction]
+        firstCategory.setActions(defaultActions, forContext: UIUserNotificationActionContext.Default)
+        
+        // NS set of all our categories (only one in our case)
+        let categories:NSSet = NSSet(objects: firstCategory)
+        
+        // Types of notification types we support
+        let types:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge
+        // Define settings for notifications
+        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories)
+        // Register notifications of our app with our settings
+        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
         
 
     return true
     }
+    
     func application(application: UIApplication,
         openURL url: NSURL,
         sourceApplication: String?,
