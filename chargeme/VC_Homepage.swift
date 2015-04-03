@@ -14,7 +14,7 @@ class VC_Homepage: UIViewController {
     
     @IBAction func facebookLogin(sender: AnyObject) {
         Utils.logInWithFacebook()
-//        nameLabel.text = PFUser.currentUser().username
+//      nameLabel.text = PFUser.currentUser().username
     }
     @IBOutlet weak var nameLabel: UILabel!
    
