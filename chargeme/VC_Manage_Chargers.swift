@@ -14,17 +14,19 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     // charger: String of the most recently selected charger from the other view
     var charger = "none" // String of most recently added charger, is passed back from the add charger controller
     
-    
     @IBOutlet weak var ownedchargers: UITableView!
     
     override func viewDidLoad() {
-        println(chargers)
         super.viewDidLoad()
         ownedchargers.dataSource = self
         ownedchargers.delegate = self
-//        NSLog(PFUser.currentUser().username)
-        // Do any additional setup after loading the view, typically from a nib.
-       // currchargers.text = chargers
+        NSLog(PFUser.currentUser().username)
+        if PFUser.currentUser() == nil {
+            println("NO SAVED CHARGERS")
+        }
+        else {
+            println("SOME SAVED")
+        }
     }
     
     override func didReceiveMemoryWarning() {
