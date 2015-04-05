@@ -10,6 +10,7 @@ import UIKit
 
 class VC_Add_Charger: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
+    // chargerarray: Possible chargers to add, hardcoded for now
     var chargerarray = ["iPhone 4", "iPhone5", "iPhone 6", "macbook Air", "macbook Pro"]
     var selectedCharger = "none"
     
@@ -25,8 +26,11 @@ class VC_Add_Charger: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
     }
     
-    
+    // ------------------------------------------------------
+    // Table population of charger array
+    // ------------------------------------------------------
     // Dynamically populating the table view with chargers in charger array
+    
     // We set the number of rows to be the length of the charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return chargerarray.count
@@ -52,14 +56,14 @@ class VC_Add_Charger: UIViewController, UITableViewDataSource, UITableViewDelega
         selectedCharger = chargerarray[indexPath.item]
     }
     
-    
+    // ------------------------------------------------------
     // SEGUE SHIT
-    
+    // ------------------------------------------------------
     // Do stuff before segue, in this case clicking the 'add charger' button will send a segue (the back button does not send a segue)
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        NSLog("PREPARE FOR SEGUE");
+        // NSLog("PREPARE FOR SEGUE");
         if selectedCharger != "none" {
-            // Set the destination, which is our homepage viewcontroller, pass it name of selected charger
+            // Set the destination, which is our homepage viewcontroller, pass it back name of selected charger
             let destinationVC = segue.destinationViewController as VC_Manage_Chargers
             destinationVC.charger = selectedCharger
         }
