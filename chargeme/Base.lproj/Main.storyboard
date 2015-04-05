@@ -70,6 +70,9 @@
                                 <state key="normal" title="Send Local Notification">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="touch_sendNotif:" destination="vXZ-lx-hvc" eventType="touchDown" id="sO0-AA-oBs"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ci9-vI-9GF">
                                 <rect key="frame" x="99" y="427" width="122" height="30"/>
