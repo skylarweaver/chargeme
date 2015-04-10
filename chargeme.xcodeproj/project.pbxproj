@@ -33,6 +33,7 @@
 		943890FF1AA7D45800DB8F00 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 943890FE1AA7D45800DB8F00 /* SystemConfiguration.framework */; };
 		943891011AA7D46200DB8F00 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891001AA7D46200DB8F00 /* libz.dylib */; };
 		943891031AA7D46C00DB8F00 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 943891021AA7D46C00DB8F00 /* libsqlite3.dylib */; };
+		94CFF4151ACF28520055A6B4 /* VC_borrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CFF4141ACF28520055A6B4 /* VC_borrow.swift */; };
 		94D103491ABDD60B0003F4B0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */; };
 		94D1034B1ABDDEFD0003F4B0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1034A1ABDDEFD0003F4B0 /* Utils.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		943891001AA7D46200DB8F00 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		943891021AA7D46C00DB8F00 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		943891061AA7E35800DB8F00 /* chargeme-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "chargeme-Bridging-Header.h"; sourceTree = "<group>"; };
+		94CFF4141ACF28520055A6B4 /* VC_borrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_borrow.swift; sourceTree = "<group>"; };
 		94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		94D1034A1ABDDEFD0003F4B0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 				3362EBA31AA7C8BE00FE5887 /* VC_Homepage.swift */,
 				94D1034A1ABDDEFD0003F4B0 /* Utils.swift */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
+				94CFF4141ACF28520055A6B4 /* VC_borrow.swift */,
 				0B0F405E1AC88B5F00714567 /* VC_Manage_Chargers.swift */,
 				0B0F40601AC88B7000714567 /* VC_Add_Charger.swift */,
 				3362EBA81AA7C8BE00FE5887 /* Images.xcassets */,
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0B0F40611AC88B7100714567 /* VC_Add_Charger.swift in Sources */,
+				94CFF4151ACF28520055A6B4 /* VC_borrow.swift in Sources */,
 				3362EBA41AA7C8BE00FE5887 /* VC_Homepage.swift in Sources */,
 				3362EBA21AA7C8BE00FE5887 /* AppDelegate.swift in Sources */,
 				0B0F405F1AC88B5F00714567 /* VC_Manage_Chargers.swift in Sources */,

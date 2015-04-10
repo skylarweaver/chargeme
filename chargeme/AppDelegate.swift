@@ -17,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    
         Parse.setApplicationId("I7unmJdF7zHeB0erTmiZG1N7VMx7yU27FvjCvHTv", clientKey: "VdtIQrnF9j1ybeiiPfhN0mHm7vYBVSNETCqJnbO5")
         //initialize facebook
         PFFacebookUtils.initializeFacebook()
@@ -42,7 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         Utils.setupNotifications()
-        
     return true
     }
     
