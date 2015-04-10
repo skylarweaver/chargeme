@@ -42,39 +42,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
         
-        // ===================================
-        // Notification Setup code: Will ask user if they want to allow notifications from our app, and sets up what notifications we respond to
-        
-        // Notification actions
-        var firstAction:UIMutableUserNotificationAction = UIMutableUserNotificationAction()
-        firstAction.identifier = "FIRST_ACTION"
-        firstAction.title = "First Action"
-        // This action activates in background of app
-        firstAction.activationMode = UIUserNotificationActivationMode.Background
-        firstAction.destructive = true
-        firstAction.authenticationRequired = false // authentication would be required in cases where said notification wants to delete data, etc
-        
-        // Notifiation categories
-        // You can organize your actions that are displayed in different contexts (eg default = all contexts, or only on lock screen, or only as a banner, etc. Here there's only one action so I'll just make it default)
-        var firstCategory:UIMutableUserNotificationCategory = UIMutableUserNotificationCategory()
-        firstCategory.identifier = "FIRST_CATEGORY"
-        let defaultActions:NSArray = [firstAction]
-        firstCategory.setActions(defaultActions, forContext: UIUserNotificationActionContext.Default)
-        
-        // NS set of all our categories (only one in our case)
-        let categories:NSSet = NSSet(objects: firstCategory)
-        
-        // Types of notification types we support
-        let types:UIUserNotificationType = UIUserNotificationType.Alert | UIUserNotificationType.Badge
-        // Define settings for notifications
-        let mySettings:UIUserNotificationSettings = UIUserNotificationSettings(forTypes: types, categories: categories)
-        // Register notifications of our app with our settings
-        UIApplication.sharedApplication().registerUserNotificationSettings(mySettings)
-        
-
-        //WHAT TO SHOW ON HOMEPAGE IF USER IS LOGGED IN
-        
+        Utils.setupNotifications()
     return true
+    }
+    
+    // This function handles recieving notifications!
+    func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
+        NSLog("Notification recieved")
     }
     
     func application(application: UIApplication,
