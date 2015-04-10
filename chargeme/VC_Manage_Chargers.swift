@@ -12,6 +12,8 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     
     // charger: String of the most recently added/selected charger, variable passed back from the add_charger controller
     var charger = "none"
+    // chargers: Array of charger objs loaded from parse
+    var chargers = [AnyObject]()
     
     @IBOutlet weak var ownedchargers: UITableView!
     
@@ -20,9 +22,18 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
         ownedchargers.dataSource = self
         ownedchargers.delegate = self
         NSLog(PFUser.currentUser().username)
+        
+        // First time on screen, initialize their charger array
         if PFUser.currentUser().objectForKey("chargersOwn") == nil {
-            // First time on screen, initialize their charger array
-            PFUser.currentUser().setValue([String](), forKey: "chargersOwn")
+            PFUser.currentUser().setValue([PFObject](), forKey: "chargersOwn")
+            PFUser.currentUser().saveEventually()
+        } else { // Not first time, lets load in the chargers user owns
+            var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
+            users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
+                (response_objects: [AnyObject]!, error: NSError!) -> Void in
+                if error != nil { NSLog("Could not load chargers from parse") }
+                else { self.chargers = response_objects }
+            }
         }
     }
     
@@ -37,9 +48,23 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     @IBAction func addCharger(segue:UIStoryboardSegue) {
         // NSLog("Recieved SEGUE")
         if charger != "none" {
-            // If the add charger viewcontroller passed back and set charger here to something not none, then we need to add it to our array saved on Parse
-            PFUser.currentUser().addObject(charger, forKey: "chargersOwn")
-            PFUser.currentUser().saveEventually()
+            
+            // Create a charger obj and associate it with the logged in user
+            var newcharger = PFObject(className:"Charger")
+            newcharger["type"] = charger
+            newcharger["isAvailable"] = false
+            var chargers_user_relationship = newcharger.relationForKey("user")
+            chargers_user_relationship.addObject(PFUser.currentUser())
+            
+            // We save the newcharger AND then run a callback that associates the charger with a user
+            // This is necessary b/c otherwise the user might fail to associate b/c charger hasn't saved yet
+            newcharger.saveInBackgroundWithBlock({ (succeeded: Bool!, error: NSError!) -> Void in
+                // The callback
+                var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
+                users_chargers_relationship.addObject(newcharger)
+                PFUser.currentUser().saveInBackground()
+            })
+        
             // Reset charger variable back to none to prep for next added charger
             charger = "none"
         }
@@ -60,7 +85,12 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
-        label.text = PFUser.currentUser().mutableArrayValueForKey("chargersOwn")[indexPath.item] as? String
+        
+        println(self.chargers[indexPath.item])
+        
+        var chargertype = PFUser.currentUser().mutableArrayValueForKey("chargersOwn")[indexPath.item]["type"]
+        label.text = chargertype as? String
+        
         cell.addSubview(label)
         return cell
     }
