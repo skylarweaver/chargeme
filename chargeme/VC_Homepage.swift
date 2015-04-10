@@ -49,7 +49,14 @@ class VC_Homepage: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    // Notification testing
+    // Notification testing: Touching the button immediately sends the notification which is then immediately responded in AppDelegate (didReceiveLocalNotification)
+    @IBAction func touch_sendNotif(sender: AnyObject) {
+        var notification:UILocalNotification = UILocalNotification()
+        notification.category = "FIRST_CATEGORY"
+        notification.alertAction = "Hi, I am a notification"
+        UIApplication.sharedApplication().presentLocalNotificationNow(notification)
+        NSLog("Touched")
+    }
     
 
 
