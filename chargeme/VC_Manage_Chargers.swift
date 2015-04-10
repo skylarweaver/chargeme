@@ -32,7 +32,11 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
             users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
                 (response_objects: [AnyObject]!, error: NSError!) -> Void in
                 if error != nil { NSLog("Could not load chargers from parse") }
-                else { self.chargers = response_objects }
+                else {
+                    self.chargers = response_objects
+                    // We need to reload the table view now that we have the user's chargers
+                    self.ownedchargers.reloadData()
+                }
             }
         }
     }
@@ -78,7 +82,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     
     // We set the number of rows to be the length of the Parse charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PFUser.currentUser().mutableArrayValueForKey("chargersOwn").count
+        return chargers.count
     }
     
     // Now we're inserting a label into each table cell
@@ -86,9 +90,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
         
-        println(self.chargers[indexPath.item])
-        
-        var chargertype = PFUser.currentUser().mutableArrayValueForKey("chargersOwn")[indexPath.item]["type"]
+        var chargertype = self.chargers[indexPath.item]["type"]
         label.text = chargertype as? String
         
         cell.addSubview(label)
@@ -102,6 +104,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Touch handler: Tapping a charger removes it
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
         PFUser.currentUser().mutableArrayValueForKey("chargersOwn").removeObjectAtIndex(indexPath.item)
         PFUser.currentUser().saveEventually()
         ownedchargers.reloadData()
