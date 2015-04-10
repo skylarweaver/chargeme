@@ -28,16 +28,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
             PFUser.currentUser().setValue([PFObject](), forKey: "chargersOwn")
             PFUser.currentUser().saveEventually()
         } else { // Not first time, lets load in the chargers user owns
-            var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
-            users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
-                (response_objects: [AnyObject]!, error: NSError!) -> Void in
-                if error != nil { NSLog("Could not load chargers from parse") }
-                else {
-                    self.chargers = response_objects
-                    // We need to reload the table view now that we have the user's chargers
-                    self.ownedchargers.reloadData()
-                }
-            }
+            self.loadChargerDataFromParse()
         }
     }
     
@@ -67,6 +58,8 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
                 var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
                 users_chargers_relationship.addObject(newcharger)
                 PFUser.currentUser().saveInBackground()
+                
+                self.loadChargerDataFromParse() // Reload table and data
             })
         
             // Reset charger variable back to none to prep for next added charger
@@ -79,6 +72,20 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     // Table population / Removing chargers
     // ------------------------------------------------------
     // Dynamically populating the table view with chargers in charger array from Parse
+    
+    // Reaches out to Parse and loads in a users chargers with a callback, and then reloads table
+    func loadChargerDataFromParse() {
+        var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
+        users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
+            (response_objects: [AnyObject]!, error: NSError!) -> Void in
+            if error != nil { NSLog("Could not load chargers from parse") }
+            else {
+                self.chargers = response_objects
+                // We need to reload the table view now that we have the user's chargers
+                self.ownedchargers.reloadData()
+            }
+        }
+    }
     
     // We set the number of rows to be the length of the Parse charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -105,9 +112,31 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     // Touch handler: Tapping a charger removes it
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        PFUser.currentUser().mutableArrayValueForKey("chargersOwn").removeObjectAtIndex(indexPath.item)
-        PFUser.currentUser().saveEventually()
-        ownedchargers.reloadData()
+        var chargerstring = self.chargers[indexPath.item]["type"]
+        
+        var query = PFQuery(className: "Charger")
+        query.whereKey("user", equalTo:PFUser.currentUser())
+        query.whereKey("type", equalTo: chargerstring)
+
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                // Query find suceeded, do something with the found objects
+                if let objects = objects as? [PFObject] {
+                    // Remove first match of charger from charger table
+                    objects[0].deleteInBackground()
+                    self.loadChargerDataFromParse()
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error) \(error.userInfo!)")
+            }
+        }
+
+//        
+//        PFUser.currentUser().mutableArrayValueForKey("chargersOwn").removeObjectAtIndex(indexPath.item)
+//        PFUser.currentUser().saveEventually()
+//        ownedchargers.reloadData()
     }
     
     // ------------------------------------------------------
