@@ -35,11 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } else {
                 NSLog("%@", error)
             }
-            var user2 = PFUser.currentUser()
-            if (user2 != nil){
-                println("EMAIL!")
-                println(user2.email)
-            }
         }
         
         Utils.setupNotifications()
