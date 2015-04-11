@@ -69,7 +69,7 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
     }
     // We set the number of rows to be the length of the Parse charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PFUser.currentUser().mutableArrayValueForKey("chargersOwn").count
+        return self.chargers.count
     }
     
     // Reaches out to Parse and loads in a users chargers with a callback, and then reloads table
@@ -90,14 +90,14 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
-        if self.chargers.count > 0 {
+//        if self.chargers.count > 0 {
             var chargertype = self.chargers[indexPath.item]["type"]
             label.text = chargertype as? String
 
-        }
-        else{
-            label.text = ""
-        }
+//        }
+//        else{
+//            label.text = ""
+//        }
         cell.addSubview(label)
         return cell
     }

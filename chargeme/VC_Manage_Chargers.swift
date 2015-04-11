@@ -89,7 +89,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
     
     // We set the number of rows to be the length of the Parse charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PFUser.currentUser().mutableArrayValueForKey("chargersOwn").count
+        return self.chargers.count
     }
     
     // Now we're inserting a label into each table cell
@@ -97,14 +97,14 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
       
-        if self.chargers.count > 0 {
+//        if self.chargers.count > 0 {
             var chargertype = self.chargers[indexPath.item]["type"]
             label.text = chargertype as? String
             
-        }
-        else{
-            label.text = ""
-        }
+//        }
+//        else{
+//            label.text = ""
+//        }
         
         cell.addSubview(label)
         return cell
@@ -138,7 +138,6 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
                     // Log details of the failure
                     println("Error: \(error) \(error.userInfo!)")
                 }
-        
             }
         }
 //        
