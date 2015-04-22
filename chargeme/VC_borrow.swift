@@ -20,20 +20,22 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // charger: String of the most recently added/selected charger, variable passed back from the add_charger controller
     var charger = "none"
     // chargers: Array of charger objs loaded from parse
-    var chargers = [AnyObject]()
+//    var chargers = [AnyObject]()
+    //Also hardcoded in VC_Add_chargers
+    var chargerarray = ["iPhone 4","iPhone 4S", "iPhone 5", "iPhone 5S", "iPhone 6", "iPhone 6S", "Old Macbook Pro", "Macbook Air", "New RMBP"]
+    
+    var request_type = "None"
+
     
     
-    @IBAction func findLenderButton(sender: AnyObject)
-        {
-        // Create request class
+    @IBAction func findLenderButton(sender: AnyObject){
+            // Create request class
+        if (selectedCharger != "") {
             var request = PFObject(className: "Request")
-            request.setObject(selectedCharger, forKey: "chargerId")
+            request.setObject(selectedCharger, forKey: "chargerType")
             request.setObject(requester, forKey: "requester")
             request.setObject(sliderValue, forKey: "minutesRequested")
             //add request.setObject(LOCATION, forKey: "requesterLocation")
-
-//            NSLog(selectedCharger)
-            NSLog(requester)
             request.saveInBackgroundWithBlock {
                 (success: Bool!, error: NSError!) -> Void in
                 if (success != nil) {
@@ -42,16 +44,23 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
                     NSLog("SHIT")
                     NSLog("%@", error)
                 }
-            }
-
+                }
+                request_type = selectedCharger
+//            Utils.findMatchingLenders(request);
+        }else{
+            var noChargerAlert = UIAlertController(title: "Select a Charger", message: "Please chose a charger you would like to request.", preferredStyle: UIAlertControllerStyle.Alert)
+            noChargerAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
+            self.presentViewController(noChargerAlert, animated: true, completion: nil)
+        }
             // save device and time duration to parse in that request object, along with user requesting
-        //search for other users who have that charger in order of distance. Might want another function or class to do this?
-        //fdfdf
+            //search for other users who have that charger in order of distance. Might want another function or class to do this?
     }
     @IBAction func valueChanged(sender: UISlider) {
         var currentValue = Int(sender.value)
-        sliderLabel.text = "\(currentValue)"
+        sliderLabel.text = "\(currentValue) Minutes"
         sliderValue = Int(sender.value)
+        self.slider.minimumValue = 1;
+
     }
 
     
@@ -66,40 +75,37 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
         } else { // Not first time, lets load in the chargers user owns
             self.loadChargerDataFromParse()
         }
+        self.slider.value = (15);
+        sliderLabel.text = "\(15) Minutes";
+        sliderValue = 15;
     }
     // We set the number of rows to be the length of the Parse charger array
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.chargers.count
+        return chargerarray.count
     }
     
     // Reaches out to Parse and loads in a users chargers with a callback, and then reloads table
     func loadChargerDataFromParse() {
-        var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
-        users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
-            (response_objects: [AnyObject]!, error: NSError!) -> Void in
-            if error != nil { NSLog("Could not load chargers from parse") }
-            else {
-                self.chargers = response_objects
-                // We need to reload the table view now that we have the user's chargers
-                self.chargerTableView.reloadData()
-            }
-        }
+//        var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
+//        users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
+//            (response_objects: [AnyObject]!, error: NSError!) -> Void in
+//            if error != nil { NSLog("Could not load chargers from parse") }
+//            else {
+//                self.chargers = response_objects
+//                // We need to reload the table view now that we have the user's chargers
+//                self.chargerTableView.reloadData()
+//            }
+//        }
     }
     
     // Now we're inserting a label into each table cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
         let cell = UITableViewCell()
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
-//        if self.chargers.count > 0 {
-            var chargertype = self.chargers[indexPath.item]["type"]
-            label.text = chargertype as? String
-
-//        }
-//        else{
-//            label.text = ""
-//        }
+        label.text = chargerarray[indexPath.item]
         cell.addSubview(label)
         return cell
+        
     }
     
     // For styling, this is for UITableViewDelegate
@@ -109,30 +115,20 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     // Touch handler: Tapping a charger removes it
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        var chargerstring = self.chargers[indexPath.item]["type"]
-        var query = PFQuery(className: "Charger")
-        query.whereKey("user", equalTo:PFUser.currentUser())
-        query.whereKey("type", equalTo: chargerstring)
-        
-        //find charger then save object
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [AnyObject]!, error: NSError!) -> Void in
-            if error == nil {
-                // Query find suceeded, do something with the found objects
-                if let objects = objects as? [PFObject] {
-                    self.selectedCharger = objects[0].objectId
-//                    self.loadChargerDataFromParse()
-                }
-            } else {
-                // Log details of the failure
-                println("Error: \(error) \(error.userInfo!)")
-            }
+        var chargerstring = self.chargerarray[indexPath.item]
+        self.selectedCharger = chargerstring
+    }
+    
+    // ------------------------------------------------------
+    // SEGUE SHIT
+    // ------------------------------------------------------
+    // Do stuff before segue, in this case clicking the 'add charger' button will send a segue (the back button does not send a segue)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+         NSLog("PREPARE FOR SEGUE");
+        if request_type != "None" {
+            let destinationVC = segue.destinationViewController as VC_listLenders
+            destinationVC.request_type = request_type
         }
-        
-        //PFUser.currentUser().mutableArrayValueForKey("chargersOwn").removeObjectAtIndex(indexPath.item)
-//        PFUser.currentUser().saveEventually()
-//        chargerTableView.reloadData()
     }
 }
 

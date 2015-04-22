@@ -11,7 +11,8 @@ import UIKit
 class VC_Add_Charger: UIViewController, UITableViewDataSource, UITableViewDelegate  {
 
     // chargerarray: Possible chargers to add, hardcoded for now
-    var chargerarray = ["iPhone 4", "iPhone5", "iPhone 6", "macbook Air", "macbook Pro"]
+    var chargerarray = ["iPhone 4","iPhone 4S", "iPhone 5", "iPhone 5S", "iPhone 6", "iPhone 6S", "Old Macbook Pro", "Macbook Air", "New RMBP"]
+    //array now moved to Utils file
     var selectedCharger = "none"
     
     @IBOutlet weak var chargertable: UITableView!

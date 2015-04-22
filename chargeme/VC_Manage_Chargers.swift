@@ -47,7 +47,7 @@ class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDe
             // Create a charger obj and associate it with the logged in user
             var newcharger = PFObject(className:"Charger")
             newcharger["type"] = charger
-            newcharger["isAvailable"] = false
+            newcharger["isAvailable"] = true
             var chargers_user_relationship = newcharger.relationForKey("user")
             chargers_user_relationship.addObject(PFUser.currentUser())
             

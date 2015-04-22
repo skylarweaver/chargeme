@@ -36,6 +36,7 @@
 		94CFF4151ACF28520055A6B4 /* VC_borrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94CFF4141ACF28520055A6B4 /* VC_borrow.swift */; };
 		94D103491ABDD60B0003F4B0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */; };
 		94D1034B1ABDDEFD0003F4B0 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D1034A1ABDDEFD0003F4B0 /* Utils.swift */; };
+		94D33ABE1AE823A800546C3C /* VC_listLenders.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94D33ABD1AE823A800546C3C /* VC_listLenders.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 		94CFF4141ACF28520055A6B4 /* VC_borrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_borrow.swift; sourceTree = "<group>"; };
 		94D103481ABDD60B0003F4B0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		94D1034A1ABDDEFD0003F4B0 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		94D33ABD1AE823A800546C3C /* VC_listLenders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VC_listLenders.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 				3362EBA31AA7C8BE00FE5887 /* VC_Homepage.swift */,
 				94D1034A1ABDDEFD0003F4B0 /* Utils.swift */,
 				3362EBA51AA7C8BE00FE5887 /* Main.storyboard */,
+				94D33ABD1AE823A800546C3C /* VC_listLenders.swift */,
 				94CFF4141ACF28520055A6B4 /* VC_borrow.swift */,
 				0B0F405E1AC88B5F00714567 /* VC_Manage_Chargers.swift */,
 				0B0F40601AC88B7000714567 /* VC_Add_Charger.swift */,
@@ -303,6 +306,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94D33ABE1AE823A800546C3C /* VC_listLenders.swift in Sources */,
 				0B0F40611AC88B7100714567 /* VC_Add_Charger.swift in Sources */,
 				94CFF4151ACF28520055A6B4 /* VC_borrow.swift in Sources */,
 				3362EBA41AA7C8BE00FE5887 /* VC_Homepage.swift in Sources */,
