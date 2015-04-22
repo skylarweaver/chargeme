@@ -53,7 +53,7 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
             self.presentViewController(noChargerAlert, animated: true, completion: nil)
         }
             // save device and time duration to parse in that request object, along with user requesting
-            //search for other users who have that charger in order of distance. Might want another function or class to do this?
+
     }
     @IBAction func valueChanged(sender: UISlider) {
         var currentValue = Int(sender.value)
@@ -129,6 +129,24 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
             let destinationVC = segue.destinationViewController as VC_listLenders
             destinationVC.request_type = request_type
         }
+        //PFUser.currentUser().mutableArrayValueForKey("chargersOwn").removeObjectAtIndex(indexPath.item)
+//        PFUser.currentUser().saveEventually()
+//        chargerTableView.reloadData()
     }
+    
+//    override func viewWillDisappear(animated: Bool) {
+//        NSLog("Please");
+//        super.viewWillDisappear(animated)
+//        if (self.isMovingFromParentViewController()){
+//            NSLog("AHHH");
+//        }
+//    }
+    
+    // Logout user when back button is pressed and user goes back to intro/homepage
+//    override func willMoveToParentViewController(parent: UIViewController?) {
+//        NSLog("PRessed back button")
+////        PFUser.logOut()
+//    }
+
 }
 

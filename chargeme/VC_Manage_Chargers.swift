@@ -9,7 +9,7 @@
 import UIKit
 
 class VC_Manage_Chargers: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
+
     // charger: String of the most recently added/selected charger, variable passed back from the add_charger controller
     var charger = "none"
     // chargers: Array of charger objs loaded from parse

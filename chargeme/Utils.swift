@@ -14,6 +14,7 @@ class Utils {
         // here I assume that a user must be linked to Facebook
         return user == nil || !PFFacebookUtils.isLinkedWithUser(user)
     }
+    
     class func loggedIn() -> Bool {
         return !notLoggedIn()
     }

@@ -16,31 +16,38 @@ class VC_Homepage: UIViewController {
     @IBOutlet weak var facebookLoginButton: UIButton!
     @IBOutlet weak var textDescription: UITextView!
     
+    @IBOutlet weak var borrowbutton: UIButton!
+    @IBOutlet weak var logoutbutton: UIButton!
+    @IBOutlet weak var loginbutton: UIButton!
     
+    // User clicks logout button
+    @IBAction func logout(sender: AnyObject) {
+        PFUser.logOut();
+        borrowbutton.hidden = true
+        loginbutton.hidden = false
+        logoutbutton.hidden = true
+    }
     
     //User clicks Login button
     @IBAction func facebookLogin(sender: AnyObject) {
         Utils.logInWithFacebook()
-//      nameLabel.text = PFUser.currentUser().username
+        self.performSegueWithIdentifier("segue_borrow", sender: self)
     }
    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        if Utils.notLoggedIn(){
-//            welcomeLabel.text = "Welcome"
-//            nameLabel.text = PFUser.currentUser().username
-            textDescription.hidden = false
-            welcomeLabel.hidden = true
-            nameLabel.hidden = true
-        }
-        else{
-            welcomeLabel.text = "Welcome"
-            nameLabel.text = PFUser.currentUser().username
-            welcomeLabel.hidden = false
-            nameLabel.hidden = false
-            textDescription.hidden = true
-            facebookLoginButton.hidden = true
+        if Utils.loggedIn() {
+            loginbutton.hidden = true
+            logoutbutton.hidden = false
+            borrowbutton.hidden = false
+            NSLog("Logged in")
+            println("Logged in")
+            self.performSegueWithIdentifier("segue_borrow", sender: self)
+        } else {
+            loginbutton.hidden = false
+            borrowbutton.hidden = true
+            logoutbutton.hidden = true
+            println("Logged out")
+            super.viewDidLoad()
         }
     }
 
@@ -56,6 +63,17 @@ class VC_Homepage: UIViewController {
         notification.alertAction = "Hi, I am a notification"
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         NSLog("Touched")
+    }
+    
+    // Set title to logout
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        navigationItem.title = nil
+        borrowbutton.hidden = false
+        logoutbutton.hidden = false
+        loginbutton.hidden = true
+        if segue.identifier == "segue_borrow" {
+            navigationItem.title = "Logout";
+        }
     }
     
 
