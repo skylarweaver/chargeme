@@ -19,15 +19,19 @@ class VC_borrow: UIViewController {
         //
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        
-    }
+//    override func viewWillDisappear(animated: Bool) {
+//        NSLog("Please");
+//        super.viewWillDisappear(animated)
+//        if (self.isMovingFromParentViewController()){
+//            NSLog("AHHH");
+//        }
+//    }
     
     // Logout user when back button is pressed and user goes back to intro/homepage
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        NSLog("PRessed back button")
-//        PFUser.logOut()
-    }
-    
+//    override func willMoveToParentViewController(parent: UIViewController?) {
+//        NSLog("PRessed back button")
+////        PFUser.logOut()
+//    }
+
 }
 
