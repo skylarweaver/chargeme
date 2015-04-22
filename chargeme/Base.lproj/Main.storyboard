@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1066" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tzg-vY-Ils">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="13F1077" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="tzg-vY-Ils">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -13,12 +13,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="E9x-wB-cLT"/>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="F13-83-h2P"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eeg-4b-OUF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-334" y="226"/>
+            <point key="canvasLocation" x="252" y="186"/>
         </scene>
         <!--Homepage-->
         <scene sceneID="ufC-wZ-h7g">
@@ -84,7 +84,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="5bl-Ae-row" kind="push" id="DTr-wK-Da1"/>
+                                    <segue destination="5bl-Ae-row" kind="push" identifier="segue_borrow" id="DTr-wK-Da1"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -101,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="123" y="254"/>
+            <point key="canvasLocation" x="715" y="186"/>
         </scene>
         <!--Lend-->
         <scene sceneID="nLK-ba-Ytr">
@@ -191,7 +191,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H97-fv-oQr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="227" y="937"/>
+            <point key="canvasLocation" x="367" y="1021"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="cAs-fQ-xTq">

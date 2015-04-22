@@ -17,7 +17,17 @@ class VC_borrow: UIViewController {
         // save device and time duration to parse in that request object, along with user requesting
         //search for other users who have that charger in order of distance. Might want another function or class to do this?
         //
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
         
     }
+    
+    // Logout user when back button is pressed and user goes back to intro/homepage
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        NSLog("PRessed back button")
+//        PFUser.logOut()
+    }
+    
 }
 

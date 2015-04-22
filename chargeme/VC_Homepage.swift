@@ -21,26 +21,17 @@ class VC_Homepage: UIViewController {
     //User clicks Login button
     @IBAction func facebookLogin(sender: AnyObject) {
         Utils.logInWithFacebook()
-//      nameLabel.text = PFUser.currentUser().username
+        self.performSegueWithIdentifier("segue_borrow", sender: self)
     }
    
     override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        if Utils.notLoggedIn(){
-//            welcomeLabel.text = "Welcome"
-//            nameLabel.text = PFUser.currentUser().username
-            textDescription.hidden = false
-            welcomeLabel.hidden = true
-            nameLabel.hidden = true
-        }
-        else{
-            welcomeLabel.text = "Welcome"
-            nameLabel.text = PFUser.currentUser().username
-            welcomeLabel.hidden = false
-            nameLabel.hidden = false
-            textDescription.hidden = true
-            facebookLoginButton.hidden = true
+        if Utils.loggedIn() {
+            NSLog("Logged in")
+            println("Logged in")
+            self.performSegueWithIdentifier("segue_borrow", sender: self)
+        } else {
+            println("Logged out")
+            super.viewDidLoad()
         }
     }
 
@@ -57,6 +48,14 @@ class VC_Homepage: UIViewController {
         UIApplication.sharedApplication().presentLocalNotificationNow(notification)
         NSLog("Touched")
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        navigationItem.title = nil
+        if segue.identifier == "segue_borrow" {
+            navigationItem.title = "Logout";
+        }
+    }
+
     
 
 
