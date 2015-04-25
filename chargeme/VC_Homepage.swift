@@ -31,7 +31,9 @@ class VC_Homepage: UIViewController {
     //User clicks Login button
     @IBAction func facebookLogin(sender: AnyObject) {
         Utils.logInWithFacebook()
-        self.performSegueWithIdentifier("segue_borrow", sender: self)
+        loginbutton.hidden = true
+        logoutbutton.hidden = false
+        borrowbutton.hidden = false
     }
    
     override func viewDidLoad() {
