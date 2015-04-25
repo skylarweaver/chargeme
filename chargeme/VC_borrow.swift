@@ -46,7 +46,7 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
                 }
                 }
                 request_type = selectedCharger
-//            Utils.findMatchingLenders(request);
+            Utils.findMatchingLenders(request);
         }else{
             var noChargerAlert = UIAlertController(title: "Select a Charger", message: "Please chose a charger you would like to request.", preferredStyle: UIAlertControllerStyle.Alert)
             noChargerAlert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.Default, handler: nil))
