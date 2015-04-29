@@ -9,7 +9,6 @@
 import UIKit
 
 class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var deviceTextField: UITextField!
     @IBOutlet weak var chargerTableView: UITableView!
     @IBOutlet weak var slider: UISlider!
     @IBOutlet weak var sliderLabel: UILabel!
@@ -73,7 +72,7 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
             PFUser.currentUser().setValue([PFObject](), forKey: "chargersOwn")
             PFUser.currentUser().saveEventually()
         } else { // Not first time, lets load in the chargers user owns
-            self.loadChargerDataFromParse()
+//            self.loadChargerDataFromParse()
         }
         self.slider.value = (15);
         sliderLabel.text = "\(15) Minutes";
@@ -84,19 +83,19 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
         return chargerarray.count
     }
     
-    // Reaches out to Parse and loads in a users chargers with a callback, and then reloads table
-    func loadChargerDataFromParse() {
-//        var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
-//        users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
-//            (response_objects: [AnyObject]!, error: NSError!) -> Void in
-//            if error != nil { NSLog("Could not load chargers from parse") }
-//            else {
-//                self.chargers = response_objects
-//                // We need to reload the table view now that we have the user's chargers
-//                self.chargerTableView.reloadData()
-//            }
-//        }
-    }
+//    // Reaches out to Parse and loads in a users chargers with a callback, and then reloads table
+//    func loadChargerDataFromParse() {
+////        var users_chargers_relationship = PFUser.currentUser().relationForKey("chargers")
+////        users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
+////            (response_objects: [AnyObject]!, error: NSError!) -> Void in
+////            if error != nil { NSLog("Could not load chargers from parse") }
+////            else {
+////                self.chargers = response_objects
+////                // We need to reload the table view now that we have the user's chargers
+////                self.chargerTableView.reloadData()
+////            }
+////        }
+//    }
     
     // Now we're inserting a label into each table cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
@@ -104,8 +103,8 @@ class VC_borrow: UIViewController, UITableViewDelegate, UITableViewDataSource {
         let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
         label.text = chargerarray[indexPath.item]
         cell.addSubview(label)
+        println("HELLOOOOOOOOOOOOOO");
         return cell
-        
     }
     
     // For styling, this is for UITableViewDelegate

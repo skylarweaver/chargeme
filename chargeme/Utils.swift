@@ -8,7 +8,19 @@
 
 import Foundation
 
+//var matchingLenders: [PFObject] = []
+
 class Utils {
+//    static var x: Int = 4
+    
+     struct SubStruct { static var matchingLenders: [PFObject] = [] }
+    
+    public class var matchingLenders: [PFObject]
+        {
+        get { return SubStruct.matchingLenders }
+        set { SubStruct.matchingLenders = newValue }
+    }
+    
     class func notLoggedIn() -> Bool {
         let user = PFUser.currentUser()
         // here I assume that a user must be linked to Facebook
@@ -121,7 +133,6 @@ class Utils {
     
     class func findMatchingLenders(request: PFObject){
         var users_chargers_relationship: [PFRelation] = []
-        var matchingLenders: [PFObject] = []
         println("Searching for matching lenders");
         var query = PFQuery(className: "Charger")
         query.whereKey("type", equalTo: request.objectForKey("chargerType"))
@@ -140,11 +151,12 @@ class Utils {
                         userQuery.findObjectsInBackgroundWithBlock {
                             (objects1: [AnyObject]!, error: NSError!) -> Void in
                             if error == nil {
-                                let matchingLenders = objects1
                                 // Query find suceeded, do something with the found objects
                                 if let objects1 = objects1 as? [PFObject] {
                                     println(objects1);
                                     println("doing this");
+                                    self.matchingLenders = objects1
+                                    //reload table
                                 }
                             } else {
                                 // Log details of the failure
@@ -152,7 +164,7 @@ class Utils {
                             }
                         }
                     };
-                    println(matchingLenders);
+                    println(self.matchingLenders);
                     println("IN HERE");
 //                    users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
 //                        (response_objects: [AnyObject]!, error: NSError!) -> Void in

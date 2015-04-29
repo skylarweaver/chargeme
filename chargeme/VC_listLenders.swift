@@ -10,79 +10,51 @@ import Foundation
 import UIKit
 
 class VC_listLenders: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var lenderList: UITableView!
+    @IBOutlet weak  var lenderList: UITableView!
     var request_type = "";
-    
+  
     override func viewDidLoad() {
+        super.viewDidLoad();
+        lenderList.dataSource = self;
+        lenderList.delegate = self;
         println("HALY");
     }
     
-    func loadMatchingUsersFromParse() {
-//        var users_chargers_relationship: [PFRelation] = []
-//        var matchingLenders: [PFObject] = []
-//        println("Searching for matching lenders");
-//        var query = PFQuery(className: "Charger")
-//        query.whereKey("type", equalTo: request.objectForKey("chargerType"))
-//        query.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            if error == nil {
-//                // Query find suceeded, do something with the found objects
-//                if let objects = objects as? [PFObject] {
-//                    for object: PFObject in objects {
-//                        //                      println("IN HERE")
-//                        var charger_user_relation = object.relationForKey("user")
-//                        var userQuery = charger_user_relation.query()
-//                        //                        userQuery.findObjectsInBackgroundWithBlock() {
-//                        //                            (objects1: [AnyObject]!, error: NSError!) -> Void in
-//                        //                            if error == nil {
-//                        userQuery.findObjectsInBackgroundWithBlock {
-//                            (objects1: [AnyObject]!, error: NSError!) -> Void in
-//                            if error == nil {
-//                                let matchingLenders = objects1
-//                                // Query find suceeded, do something with the found objects
-//                                if let objects1 = objects1 as? [PFObject] {
-//                                    println(objects1);
-//                                    println("doing this");
-//                                }
-//                            } else {
-//                                // Log details of the failure
-//                                println("Error: \(error) \(error.userInfo!)")
-//                            }
-//                        }
-//                    };
-//                    println(matchingLenders);
-//                    println("IN HERE");
-//                    //                    users_chargers_relationship.query().findObjectsInBackgroundWithBlock {
-//                    //                        (response_objects: [AnyObject]!, error: NSError!) -> Void in
-//                    //                        if error != nil { NSLog("Could not load chargers from parse") }
-//                    //                        else {
-//                    //                            self.chargers = response_objects
-//                    //                            // We need to reload the table view now that we have the user's chargers
-//                    //                            self.ownedchargers.reloadData()
-//                    //                        }
-//                    //                    }
-//                }
-//            } else {
-//                // Log details of the failure
-//                println("Error: \(error) \(error.userInfo!)")
-//            }
-//        }
-//        //        notifyEachMatchingLender(matchingLenders);
-
-        
-        
+    func reloadLenderData(){
+        println("UEAJ");
+        self.lenderList.reloadData();
     }
+    
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-//        return Utils.findMatchingLenders(<#request: PFObject#>);
+        if (Utils.matchingLenders.count > 0){
+            println("printing lenders count");
+            println(Utils.matchingLenders.count);
+            print (Utils.matchingLenders);
+            return Utils.matchingLenders.count;
+        }
+        else{
+            println("I AM IN HERE");
+            return 7;
+        }
     }
     
     // Now we're inserting a label into each table cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) ->   UITableViewCell {
-                let cell = UITableViewCell()
+        println("- - - -- - - - - - - - - - - - -");
+        let cell = UITableViewCell()
+        let label = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
+        if (Utils.matchingLenders.count > 0){
+            label.text = Utils.matchingLenders[indexPath.item].objectForKey("username") as NSString;
+        }
+        else{
+            label.text="";
+        }
+        cell.addSubview(label)
+        var timer = NSTimer.scheduledTimerWithTimeInterval(Double(0.5), target: self, selector: Selector("reloadLenderData"), userInfo:nil, repeats: false)
+//        timer.invalidate()
+        println("- - - -- - - - - - - - - - - - - ");
         return cell
-        
     }
     
     // For styling, this is for UITableViewDelegate
@@ -90,9 +62,11 @@ class VC_listLenders: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 50
     }
     
-    // Touch handler: Tapping a charger removes it
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-
-    }
+//    // Touch handler: Tapping a charger removes it
+//    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//        var lendingUser = Utils.matchingLenders[indexPath.item]
+//        lenderList.reloadData();
+//
+//    }
 }
 
